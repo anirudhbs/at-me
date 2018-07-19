@@ -29,6 +29,7 @@ export function signUpUser (userObject) {
     })
       .then(res => res.json())
       .then(data => {
+        console.log('sign up user response', data)
         dispatch(setUserInfo(data))
       })
   }

@@ -7,6 +7,7 @@ class Header extends Component {
       <ul>
         <li><Link to='/users'>users</Link></li>
         <li><Link to='/login'>login</Link></li>
+        <li><Link to='/feed'>feed</Link></li>
       </ul>
     )
   }

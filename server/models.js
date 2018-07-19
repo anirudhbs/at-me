@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { Users } = require('./schema')
 
-const url = 'mongodb://127.0.0.1:27017/'
+const url = 'mongodb://127.0.0.1:27017/atme'
 const models = {}
 
 mongoose.connect(url) // todo: add useNewUrlParser: true flag
@@ -12,7 +12,7 @@ models.getAllUsers = async function () {
 }
 
 models.addNewUser = async function (googleId, displayName) {
-  if (await checkIfUserExists()) {
+  if (await checkIfUserExists(googleId)) {
     return {
       error: 'user already exists'
     }
@@ -21,7 +21,7 @@ models.addNewUser = async function (googleId, displayName) {
     googleId: googleId,
     displayName: displayName
   })
-  await user.save()
+  user.save()
   return {
     message: 'user added'
   }
@@ -29,7 +29,7 @@ models.addNewUser = async function (googleId, displayName) {
 
 async function checkIfUserExists (googleId) {
   const user = await Users.findOne({ googleId })
-  if ('googleId' in user) {
+  if (user && 'googleId' in user) {
     return true
   }
   return false
