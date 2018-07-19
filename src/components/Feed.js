@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
-
+import NewTweet from './NewTweet'
+import TweetList from './TweetList'
 class Feed extends Component {
   render () {
     return (
-      <h2>Feed</h2>
+      <React.Fragment>
+        <NewTweet />
+        <TweetList />
+      </React.Fragment>
     )
   }
 }

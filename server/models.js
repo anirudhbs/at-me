@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { Users } = require('./schema')
+const { Users, Tweets } = require('./schema')
 
 const url = 'mongodb://127.0.0.1:27017/atme'
 const models = {}
@@ -21,7 +21,7 @@ models.addNewUser = async function (googleId, displayName) {
     googleId: googleId,
     displayName: displayName
   })
-  user.save()
+  await user.save()
   return {
     message: 'user added'
   }
@@ -33,6 +33,17 @@ async function checkIfUserExists (googleId) {
     return true
   }
   return false
+}
+
+models.addNewTweet = async function (body) {
+  const tweet = new Tweets({
+    author: '', // todo: fill this
+    body: body
+  })
+  await tweet.save()
+  return {
+    message: 'tweet added'
+  }
 }
 
 module.exports = models

@@ -1,5 +1,6 @@
 export const SET_USERS = 'SET_USERS'
 export const SET_USER_INFO = 'SET_USER_INFO'
+export const SET_TWEETS = 'SET_TWEETS'
 
 export function getUsers () {
   return (dispatch) => {
@@ -19,6 +20,7 @@ export function setUsers (users) {
 }
 
 export function signUpUser (userObject) {
+  console.log('user', userObject)
   return (dispatch) => {
     return fetch('http://localhost:3000/api/users/new', {
       method: 'POST',
@@ -27,10 +29,15 @@ export function signUpUser (userObject) {
       },
       body: JSON.stringify(userObject)
     })
-      .then(res => res.json())
+      .then(res => {
+        console.log('first then')
+        return res.json()
+      })
       .then(data => {
-        console.log('sign up user response', data)
         dispatch(setUserInfo(data))
+      })
+      .catch((err) => {
+        console.log('Error while logging in', err) // todo: fix error
       })
   }
 }
@@ -40,4 +47,22 @@ export function setUserInfo (userInfo) {
     type: SET_USER_INFO,
     userInfo
   }
+}
+
+export function postTweet (tweetObject) {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/api/tweets/new', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      },
+      body: JSON.stringify(tweetObject)
+    })
+      .then(res => res.json())
+      .then(data => {
+      })
+      .catch((err) => {
+        console.log('Error while posting tweet', err) // todo: fix error
+      })
+  }  
 }

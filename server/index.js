@@ -8,7 +8,7 @@ const PORT = 3000
 app.use(cors())
 app.use(bodyParser.json())
 
-app.use('/api/users', routes)
+app.use('/api', routes)
 
 app.listen(PORT, () => {
   console.log(`listening on ${PORT}`)

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const tweetSchema = new Schema({
   author: String,
-  content: String,
+  body: String,
   date: {
     type: Date,
     default: Date.now
