@@ -6,4 +6,10 @@ users.getAll = async (req, res) => {
   res.send(users)
 }
 
+users.addNewUser = async (req, res) => {
+  const { userId, displayName } = req.body
+  const newUser = await models.addNewUser(userId, displayName)
+  res.send(newUser)
+}
+
 module.exports = users

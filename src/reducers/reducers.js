@@ -1,14 +1,14 @@
-import { HELLO_WORLD } from '../actions/actions'
+import { SET_USERS } from '../actions/actions'
 
 const initialState = {
-  helloWorld: 'not yet'
+  users: []
 }
 
 export default function reducer (previousState = initialState, action) {
   switch (action.type) {
-    case HELLO_WORLD: {
+    case SET_USERS: {
       return Object.assign({}, previousState, {
-        helloWorld: action.value
+        users: action.users
       })
     }
     default: return previousState
