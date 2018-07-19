@@ -7,8 +7,8 @@ users.getAll = async (req, res) => {
 }
 
 users.addNewUser = async (req, res) => {
-  const { userId, displayName } = req.body
-  const newUser = await models.addNewUser(userId, displayName)
+  const { googleId, displayName } = req.body
+  const newUser = await models.addNewUser(googleId, displayName)
   res.send(newUser)
 }
 

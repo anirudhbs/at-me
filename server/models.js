@@ -11,14 +11,28 @@ models.getAllUsers = async function () {
   return users
 }
 
-models.addNewUser = async function (userId, displayName) {
+models.addNewUser = async function (googleId, displayName) {
+  if (await checkIfUserExists()) {
+    return {
+      error: 'user already exists'
+    }
+  }
   const user = new Users({
-    userName: userId,
+    googleId: googleId,
     displayName: displayName
   })
-
   await user.save()
-  return 'done'
+  return {
+    message: 'user added'
+  }
+}
+
+async function checkIfUserExists (googleId) {
+  const user = await Users.findOne({ googleId })
+  if ('googleId' in user) {
+    return true
+  }
+  return false
 }
 
 module.exports = models

@@ -13,7 +13,7 @@ class UserList extends Component {
     return (
       <div>
         {this.props.users.map(cur =>
-          <UserCard key={cur._id} userId={cur.userId} displayName={cur.displayName} />
+          <UserCard key={cur._id} displayName={cur.displayName} />
         )}
       </div>
     )

@@ -5,6 +5,7 @@ class Header extends Component {
   render () {
     return (
       <ul>
+        <li><Link to='/users'>users</Link></li>
         <li><Link to='/login'>login</Link></li>
       </ul>
     )

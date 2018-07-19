@@ -4,8 +4,8 @@ class UserCard extends Component {
   render () {
     return (
       <div>
-        userId: @{this.props.userId}
-        displayName: @{this.props.displayName}
+        userId: @{this.props.userName}
+        displayName: {this.props.displayName}
       </div>
     )
   }

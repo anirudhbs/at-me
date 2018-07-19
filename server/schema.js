@@ -17,8 +17,12 @@ const tweetSchema = new Schema({
 })
 
 const userSchema = new Schema({
-  userName: String,
-  displayName: String
+  googleId: String,
+  displayName: String,
+  date: {
+    type: Date,
+    default: Date.now
+  }
 })
 
 const Tweets = mongoose.model('tweets', tweetSchema)
