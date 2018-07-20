@@ -65,3 +65,20 @@ export function getCookie (name) {
   const parts = value.split('; ' + name + '=')
   if (parts.length === 2) return parts.pop().split(';').shift()
 }
+
+export function getTweets () {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/api/tweets/all')
+      .then(res => res.json())
+      .then(data => {
+        dispatch(setTweets(data))
+      })
+  }
+}
+
+export function setTweets (tweets) {
+  return {
+    type: SET_TWEETS,
+    tweets
+  }
+}

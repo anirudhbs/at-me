@@ -1,10 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { getTweets } from '../actions/actions'
+import TweetCard from './TweetCard'
 
 class TweetList extends Component {
+  componentDidMount () {
+    const { dispatch } = this.props
+    dispatch(getTweets())
+  }
+
   render () {
     return (
-      <h2>TweetList</h2>
+      <div>
+        {this.props.tweets.map(cur =>
+          <TweetCard body={cur.body} />
+        )}
+      </div>
     )
   }
 }
