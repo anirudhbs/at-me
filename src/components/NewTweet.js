@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { getAccessToken } from '../actions/actions'
 
 class NewTweet extends Component {
   constructor () {
@@ -17,7 +18,23 @@ class NewTweet extends Component {
   }
 
   postTweet () {
-    console.log('post tweet')
+    fetch('http://localhost:3000/api/tweets/new', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        Authorization: `Bearer ${getAccessToken()}`
+      },
+      body: JSON.stringify({
+        body: this.state.body
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ body: '' })
+      })
+      .catch((err) => {
+        console.log('Error while posting tweet', err) // todo: fix error
+      })
   }
 
   render () {

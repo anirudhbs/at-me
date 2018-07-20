@@ -35,15 +35,20 @@ async function checkIfUserExists (googleId) {
   return false
 }
 
-models.addNewTweet = async function (body) {
+models.addNewTweet = async function (author, body) {
   const tweet = new Tweets({
-    author: '', // todo: fill this
-    body: body
+    author,
+    body
   })
   await tweet.save()
   return {
     message: 'tweet added'
   }
+}
+
+models.getAllTweets = async function () {
+  const tweets = await Tweets.find()
+  return tweets
 }
 
 module.exports = models
