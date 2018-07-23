@@ -4,7 +4,9 @@ const models = require('../models')
 tweets.addNewTweet = async (req, res) => {
   const author = res.locals.id
   const { body } = req.body
-  const newTweet = await models.addNewTweet(author, body)
+  const user = await models.getUserDetails(author)
+  const { displayName } = user
+  const newTweet = await models.addNewTweet(author, displayName, body)
   res.send(newTweet)
 }
 

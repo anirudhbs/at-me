@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const tweetSchema = new Schema({
-  author: String,
+  authorId: String,
+  displayName: String,
   body: String,
   date: {
     type: Date,

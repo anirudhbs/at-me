@@ -13,7 +13,7 @@ class TweetList extends Component {
     return (
       <div>
         {this.props.tweets.map(cur =>
-          <TweetCard body={cur.body} />
+          <TweetCard key={cur._id} body={cur.body} authorId={cur.authorId} displayName={cur.displayName} />
         )}
       </div>
     )

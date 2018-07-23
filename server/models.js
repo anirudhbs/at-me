@@ -4,7 +4,15 @@ const { Users, Tweets } = require('./schema')
 const url = 'mongodb://127.0.0.1:27017/atme'
 const models = {}
 
-mongoose.connect(url) // todo: add useNewUrlParser: true flag
+mongoose.connect(url, {
+  useNewUrlParser: true
+}, (err, res) => {
+  if (err) {
+    console.log('error connecting to DB', err)
+  } else {
+    console.log('successfully connected to DB')
+  }
+})
 
 models.getAllUsers = async function () {
   const users = await Users.find()
@@ -35,9 +43,10 @@ async function checkIfUserExists (googleId) {
   return false
 }
 
-models.addNewTweet = async function (author, body) {
+models.addNewTweet = async function (authorId, displayName, body) {
   const tweet = new Tweets({
-    author,
+    authorId,
+    displayName,
     body
   })
   await tweet.save()
@@ -49,6 +58,11 @@ models.addNewTweet = async function (author, body) {
 models.getAllTweets = async function () {
   const tweets = await Tweets.find()
   return tweets
+}
+
+models.getUserDetails = async function (id) { // takes in user ID and returns complete user object
+  const user = await Users.findOne({ googleId: id })
+  return user
 }
 
 module.exports = models

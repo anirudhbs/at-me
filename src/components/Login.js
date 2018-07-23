@@ -24,7 +24,7 @@ class Login extends Component {
   }
 
   render () {
-    return ( // todo: add form to input userName
+    return (
       <div>
         <GoogleLogin
           clientId='51995173646-b85763mob6hf1fuu3mi3d2jmrqdmqi1a.apps.googleusercontent.com'

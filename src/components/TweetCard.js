@@ -4,7 +4,10 @@ class TweetCard extends Component {
   render () {
     return (
       <div>
-        tweet: {this.props.body}
+        <a href={'/user/' + this.props.authorId}>{this.props.displayName}</a>
+        <div>
+          tweet: {this.props.body}
+        </div>
       </div>
     )
   }
