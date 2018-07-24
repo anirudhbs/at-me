@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getTweets } from '../actions/actions'
+import { getTweets } from '../../actions/actions'
 import TweetCard from './TweetCard'
 
 class TweetList extends Component {

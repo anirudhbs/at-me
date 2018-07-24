@@ -82,3 +82,16 @@ export function setTweets (tweets) {
     tweets
   }
 }
+
+// export async function postTweet (body) {
+//   const api = await fetch('http://localhost:3000/api/tweets/new', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json; charset=utf-8',
+//       Authorization: `Bearer ${getAccessToken()}`
+//     },
+//     body: JSON.stringify({ body })
+//   })
+//   const res = await api.json()
+//   return res
+// }

@@ -1,5 +1,5 @@
 const tweets = {}
-const models = require('../models')
+const models = require('../models/models')
 
 tweets.addNewTweet = async (req, res) => {
   const author = res.locals.id

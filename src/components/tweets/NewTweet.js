@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { getAccessToken } from '../actions/actions'
+import { getAccessToken } from '../../actions/actions'
+// import { postTweet } from '../../actions/actions'
 
 class NewTweet extends Component {
   constructor () {
@@ -35,6 +36,8 @@ class NewTweet extends Component {
       .catch((err) => {
         console.log('Error while posting tweet', err) // todo: fix error
       })
+    // const res = postTweet(this.state.body)
+    // console.log('x', res)
   }
 
   render () {

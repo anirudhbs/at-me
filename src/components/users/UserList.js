@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getUsers } from '../actions/actions'
+import { getUsers } from '../../actions/actions'
 import UserCard from './UserCard'
 
 class UserList extends Component {

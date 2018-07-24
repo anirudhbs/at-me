@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import NewTweet from './NewTweet'
-import TweetList from './TweetList'
+import NewTweet from './tweets/NewTweet'
+import TweetList from './tweets/TweetList'
+
 class Feed extends Component {
   render () {
     return (
