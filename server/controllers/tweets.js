@@ -15,4 +15,10 @@ tweets.getAll = async (req, res) => {
   res.send(tweets)
 }
 
+tweets.getTweetsByUser = async (req, res) => {
+  const { id } = req.params
+  const tweets = await models.getTweetsByUser(id)
+  res.send(tweets)
+}
+
 module.exports = tweets

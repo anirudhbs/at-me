@@ -18,4 +18,9 @@ tweets.getAllTweets = async function () {
   return tweets
 }
 
+tweets.getTweetsByUser = async function (id) {
+  const tweets = await Tweets.find({ authorId: id })
+  return tweets
+}
+
 module.exports = tweets
